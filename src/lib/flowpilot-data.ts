@@ -37,7 +37,7 @@ export const products: Product[] = [
 ].map((item, index) => ({
   slug: item[0] as string, title: item[1] as string, subtitle: item[2] as string, category: item[3] as string,
   price: item[4] as number, oldPrice: item[5] as number, rating: item[6] as number, sales: item[7] as number,
-  status: item[8] as "New" | "Popular", image: covers[index % covers.length],
+  status: item[8] as "New" | "Popular", image: covers[index % covers.length] ?? assets.workflowOverview,
   description: "A production-ready automation resource built for practical business use, clear setup and reliable handoff.",
   features: ["Ready-to-customize workflow", "Error-aware structure", "Clear business logic", "Reusable building blocks"],
   includes: ["Workflow files", "Step-by-step setup guide", "Configuration checklist", "Prompt and field templates"],
