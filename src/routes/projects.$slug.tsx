@@ -5,5 +5,85 @@ import { FinalCTA } from "@/components/flowpilot/home";
 import { SiteLayout } from "@/components/flowpilot/site";
 import { projects } from "@/lib/flowpilot-data";
 import { pageMeta } from "@/lib/meta";
-export const Route=createFileRoute("/projects/$slug")({loader:({params})=>{const p=projects.find(x=>x.slug===params.slug);if(!p)throw notFound();return p},head:({loaderData})=>pageMeta(loaderData?.title??"Project","FlowPilot automation project details, workflow and results."),component:ProjectDetail});
-function ProjectDetail(){const p=Route.useLoaderData();return <SiteLayout><section className="pt-32"><div className="site-container"><Button variant="ghost" asChild><Link to="/projects"><ArrowLeft/> Back to projects</Link></Button><div className="mt-6 grid gap-8 lg:grid-cols-[.9fr_1.1fr]"><div><span className="tag">{p.category}</span><h1 className="mt-4 text-4xl font-semibold sm:text-6xl">{p.title}</h1><p className="mt-5 text-xl leading-8 text-muted-foreground">{p.subtitle}</p><p className="mt-8 leading-8">{p.overview}</p><div className="mt-7 flex flex-wrap gap-2">{p.technologies.map(t=><span className="tech-tag" key={t}>{t}</span>)}</div></div><img src={p.image} alt={`${p.title} n8n workflow`} className="aspect-[16/10] w-full rounded-xl bg-workflow object-contain"/></div></div></section><section className="section-band"><div className="site-container grid gap-5 md:grid-cols-2"><article className="rounded-xl border border-border p-7"><p className="eyebrow">The problem</p><h2 className="mt-3 text-3xl font-semibold">Where work was getting stuck</h2><p className="mt-4 leading-8 text-muted-foreground">{p.problem}</p></article><article className="rounded-xl border border-border p-7"><p className="eyebrow">The solution</p><h2 className="mt-3 text-3xl font-semibold">A connected workflow</h2><p className="mt-4 leading-8 text-muted-foreground">{p.solution}</p></article></div><div className="site-container mt-5 grid gap-5 md:grid-cols-2">{[["Core features",p.features],["Results",p.results]].map(([title,list])=><article className="rounded-xl bg-muted p-7" key={title as string}><h3 className="text-xl font-semibold">{title as string}</h3><div className="mt-5 grid gap-3">{(list as string[]).map(x=><span className="flex items-center gap-2" key={x}><CheckCircle2 className="h-5 w-5 text-primary"/>{x}</span>)}</div></article>)}</div></section><FinalCTA/></SiteLayout>}
+export const Route = createFileRoute("/projects/$slug")({
+  loader: ({ params }) => {
+    const p = projects.find((x) => x.slug === params.slug);
+    if (!p) throw notFound();
+    return p;
+  },
+  head: ({ loaderData }) =>
+    pageMeta(
+      loaderData?.title ?? "Project",
+      "FlowPilot automation project details, workflow and results.",
+    ),
+  component: ProjectDetail,
+});
+function ProjectDetail() {
+  const p = Route.useLoaderData();
+  return (
+    <SiteLayout>
+      <section className="pt-32">
+        <div className="site-container">
+          <Button variant="ghost" asChild>
+            <Link to="/projects">
+              <ArrowLeft /> Back to projects
+            </Link>
+          </Button>
+          <div className="mt-6 grid gap-8 lg:grid-cols-[.9fr_1.1fr]">
+            <div>
+              <span className="tag">{p.category}</span>
+              <h1 className="mt-4 text-4xl font-semibold sm:text-6xl">{p.title}</h1>
+              <p className="mt-5 text-xl leading-8 text-muted-foreground">{p.subtitle}</p>
+              <p className="mt-8 leading-8">{p.overview}</p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {p.technologies.map((t) => (
+                  <span className="tech-tag" key={t}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <img
+              src={p.image}
+              alt={`${p.title} n8n workflow`}
+              className="aspect-[16/10] w-full rounded-xl bg-workflow object-contain"
+            />
+          </div>
+        </div>
+      </section>
+      <section className="section-band">
+        <div className="site-container grid gap-5 md:grid-cols-2">
+          <article className="rounded-xl border border-border p-7">
+            <p className="eyebrow">The problem</p>
+            <h2 className="mt-3 text-3xl font-semibold">Where work was getting stuck</h2>
+            <p className="mt-4 leading-8 text-muted-foreground">{p.problem}</p>
+          </article>
+          <article className="rounded-xl border border-border p-7">
+            <p className="eyebrow">The solution</p>
+            <h2 className="mt-3 text-3xl font-semibold">A connected workflow</h2>
+            <p className="mt-4 leading-8 text-muted-foreground">{p.solution}</p>
+          </article>
+        </div>
+        <div className="site-container mt-5 grid gap-5 md:grid-cols-2">
+          {[
+            ["Core features", p.features],
+            ["Results", p.results],
+          ].map(([title, list]) => (
+            <article className="rounded-xl bg-muted p-7" key={title as string}>
+              <h3 className="text-xl font-semibold">{title as string}</h3>
+              <div className="mt-5 grid gap-3">
+                {(list as string[]).map((x) => (
+                  <span className="flex items-center gap-2" key={x}>
+                    <CheckCircle2 className="h-5 w-5 text-primary" />
+                    {x}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <FinalCTA />
+    </SiteLayout>
+  );
+}

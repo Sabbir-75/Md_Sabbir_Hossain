@@ -188,26 +188,124 @@
   }
 }
 
-html { scroll-behavior: smooth; }
-body { min-width: 320px; }
-button, a, input, textarea, select { transition: all 0.3s ease-in-out; }
-button { border-radius: 4px; }
-input, textarea, select { border-radius: 8px; }
-.site-container { width: min(1180px, calc(100% - 2rem)); margin-inline: auto; }
-.section-band { padding-block: clamp(4rem, 8vw, 7rem); }
-.page-header { padding: 10rem 0 5rem; background: linear-gradient(135deg, var(--background), var(--accent)); }
-.eyebrow { color: var(--primary); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
-.tag { display: inline-flex; border-radius: 4px; background: var(--accent); color: var(--accent-foreground); padding: .2rem .5rem; font-size: .7rem; font-weight: 650; }
-.tech-tag { border: 1px solid var(--border); border-radius: 4px; padding: .2rem .45rem; color: var(--muted-foreground); font-size: .68rem; }
-.nav-link { position: relative; color: var(--muted-foreground); font-size: .9rem; font-weight: 500; }
-.nav-link::after { content:""; position:absolute; height:2px; left:0; right:0; bottom:-7px; background:var(--primary); transform:scaleX(0); transform-origin:right; transition:transform .3s ease-in-out; }
-.nav-link:hover,.nav-active { color:var(--foreground); }
-.nav-link:hover::after,.nav-active::after { transform:scaleX(1); transform-origin:left; }
-.marquee-mask { mask-image:linear-gradient(to right,transparent,black 7%,black 93%,transparent); overflow:hidden; }
-.marquee-track { display:flex; width:max-content; animation:marquee 30s linear infinite; }
-.marquee-reverse { animation-direction:reverse; animation-duration:34s; }
-.marquee-mask:hover .marquee-track { animation-play-state:paused; }
-@keyframes marquee { to { transform:translateX(-50%); } }
-@keyframes float { 50% { transform:translateY(-8px); } }
-.float-slow { animation:float 4s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce){ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important} }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  min-width: 320px;
+}
+button,
+a,
+input,
+textarea,
+select {
+  transition: all 0.3s ease-in-out;
+}
+button {
+  border-radius: 4px;
+}
+input,
+textarea,
+select {
+  border-radius: 8px;
+}
+.site-container {
+  width: min(1180px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+.section-band {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+.page-header {
+  padding: 10rem 0 5rem;
+  background: linear-gradient(135deg, var(--background), var(--accent));
+}
+.eyebrow {
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.tag {
+  display: inline-flex;
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--accent-foreground);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+.tech-tag {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.2rem 0.45rem;
+  color: var(--muted-foreground);
+  font-size: 0.68rem;
+}
+.nav-link {
+  position: relative;
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+.nav-link:hover,
+.nav-active {
+  color: var(--foreground);
+}
+.nav-link:hover::after,
+.nav-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+  animation-duration: 34s;
+}
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.float-slow {
+  animation: float 4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

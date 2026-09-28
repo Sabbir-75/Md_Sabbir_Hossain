@@ -2,6 +2,100 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Product, Project } from "@/lib/flowpilot-data";
-export const money=(n:number)=>`৳${n.toLocaleString("en-US")}`;
-export function ProductCard({product}:{product:Product}){const discount=Math.round((1-product.price/product.oldPrice)*100);return <article className="group overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-border-strong hover:shadow-card-hover"><Link to="/products/$slug" params={{slug:product.slug}} className="block aspect-[16/10] overflow-hidden bg-workflow"><img src={product.image} alt={`${product.title} automation preview`} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy"/></Link><div className="p-4"><div className="flex items-center justify-between gap-2"><span className="tag">{product.category}</span><span className="tag bg-status text-status-foreground">{product.status}</span></div><h3 className="mt-3 text-lg font-semibold leading-snug"><Link to="/products/$slug" params={{slug:product.slug}}>{product.title}</Link></h3><p className="mt-1 truncate text-sm text-muted-foreground">{product.subtitle}</p><div className="mt-3 flex items-center gap-1 text-xs text-muted-foreground"><Star className="h-3.5 w-3.5 fill-rating text-rating"/><strong className="text-foreground">{product.rating}</strong><span>({Math.round(product.sales/10)})</span><span>·</span><span>{product.sales.toLocaleString()} sales</span></div><div className="mt-4 flex items-end justify-between gap-3"><div><strong className="text-xl">{money(product.price)}</strong><span className="ml-2 text-xs text-muted-foreground line-through">{money(product.oldPrice)}</span><span className="ml-2 rounded-[4px] bg-discount px-1.5 py-0.5 text-[10px] font-bold text-discount-foreground">{discount}% OFF</span></div></div><div className="mt-4 grid grid-cols-2 gap-2"><Button variant="outline" asChild><Link to="/products/$slug" params={{slug:product.slug}}>See Details</Link></Button><Button asChild><Link to="/checkout/$slug" params={{slug:product.slug}}>Buy Now</Link></Button></div></div></article>}
-export function ProjectCard({project}:{project:Project}){return <article className="group overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-border-strong hover:shadow-card-hover"><Link to="/projects/$slug" params={{slug:project.slug}} className="block aspect-[16/9] overflow-hidden bg-workflow"><img src={project.image} alt={`${project.title} workflow`} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy"/></Link><div className="p-5"><span className="tag">{project.category}</span><h3 className="mt-3 text-xl font-semibold">{project.title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{project.subtitle}</p><div className="mt-4 flex flex-wrap gap-1.5">{project.technologies.map(t=><span className="tech-tag" key={t}>{t}</span>)}</div><Button className="mt-5" variant="outline" asChild><Link to="/projects/$slug" params={{slug:project.slug}}>View Details <ArrowRight/></Link></Button></div></article>}
+export const money = (n: number) => `৳${n.toLocaleString("en-US")}`;
+export function ProductCard({ product }: { product: Product }) {
+  const discount = Math.round((1 - product.price / product.oldPrice) * 100);
+  return (
+    <article className="group overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-border-strong hover:shadow-card-hover">
+      <Link
+        to="/products/$slug"
+        params={{ slug: product.slug }}
+        className="block aspect-[16/10] overflow-hidden bg-workflow"
+      >
+        <img
+          src={product.image}
+          alt={`${product.title} automation preview`}
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+        />
+      </Link>
+      <div className="p-4">
+        <div className="flex items-center justify-between gap-2">
+          <span className="tag">{product.category}</span>
+          <span className="tag bg-status text-status-foreground">{product.status}</span>
+        </div>
+        <h3 className="mt-3 text-lg font-semibold leading-snug">
+          <Link to="/products/$slug" params={{ slug: product.slug }}>
+            {product.title}
+          </Link>
+        </h3>
+        <p className="mt-1 truncate text-sm text-muted-foreground">{product.subtitle}</p>
+        <div className="mt-3 flex items-center gap-1 text-xs text-muted-foreground">
+          <Star className="h-3.5 w-3.5 fill-rating text-rating" />
+          <strong className="text-foreground">{product.rating}</strong>
+          <span>({Math.round(product.sales / 10)})</span>
+          <span>·</span>
+          <span>{product.sales.toLocaleString()} sales</span>
+        </div>
+        <div className="mt-4 flex items-end justify-between gap-3">
+          <div>
+            <strong className="text-xl">{money(product.price)}</strong>
+            <span className="ml-2 text-xs text-muted-foreground line-through">
+              {money(product.oldPrice)}
+            </span>
+            <span className="ml-2 rounded-[4px] bg-discount px-1.5 py-0.5 text-[10px] font-bold text-discount-foreground">
+              {discount}% OFF
+            </span>
+          </div>
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-2">
+          <Button variant="outline" asChild>
+            <Link to="/products/$slug" params={{ slug: product.slug }}>
+              See Details
+            </Link>
+          </Button>
+          <Button asChild>
+            <Link to="/checkout/$slug" params={{ slug: product.slug }}>
+              Buy Now
+            </Link>
+          </Button>
+        </div>
+      </div>
+    </article>
+  );
+}
+export function ProjectCard({ project }: { project: Project }) {
+  return (
+    <article className="group overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-border-strong hover:shadow-card-hover">
+      <Link
+        to="/projects/$slug"
+        params={{ slug: project.slug }}
+        className="block aspect-[16/9] overflow-hidden bg-workflow"
+      >
+        <img
+          src={project.image}
+          alt={`${project.title} workflow`}
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+        />
+      </Link>
+      <div className="p-5">
+        <span className="tag">{project.category}</span>
+        <h3 className="mt-3 text-xl font-semibold">{project.title}</h3>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground">{project.subtitle}</p>
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {project.technologies.map((t) => (
+            <span className="tech-tag" key={t}>
+              {t}
+            </span>
+          ))}
+        </div>
+        <Button className="mt-5" variant="outline" asChild>
+          <Link to="/projects/$slug" params={{ slug: project.slug }}>
+            View Details <ArrowRight />
+          </Link>
+        </Button>
+      </div>
+    </article>
+  );
+}

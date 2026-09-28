@@ -5,5 +5,83 @@ import { FinalCTA } from "@/components/flowpilot/home";
 import { PageHeader, SectionHeading, SiteLayout } from "@/components/flowpilot/site";
 import { assets } from "@/lib/flowpilot-data";
 import { pageMeta } from "@/lib/meta";
-export const Route=createFileRoute("/about")({head:()=>pageMeta("About Md. Sabbir Hossain","Meet the automation specialist behind FlowPilot and learn how practical AI systems are designed."),component:About});
-function About(){return <SiteLayout><PageHeader eyebrow="About FlowPilot" title="Automation should make work clearer, not more complicated." description="I’m Md. Sabbir Hossain. I design AI agents and n8n systems around the way a business actually operates."/><section className="section-band"><div className="site-container grid items-center gap-10 lg:grid-cols-2"><div className="overflow-hidden rounded-xl bg-workflow"><img src={assets.founder} alt="Md. Sabbir Hossain at his AI automation workspace" className="aspect-[4/3] w-full object-cover"/></div><div><p className="eyebrow">Who I am</p><h2 className="mt-3 text-4xl font-semibold">A builder focused on useful systems</h2><p className="mt-5 leading-8 text-muted-foreground">FlowPilot brings together workflow design, AI, APIs and structured data. My goal is not automation for its own sake—it is a dependable system your team understands and your customers can feel.</p><div className="mt-7 grid gap-3">{["Start with the real process","Design for failure and handoff","Keep ownership with your team","Measure the useful outcome"].map(x=><div className="flex items-center gap-3" key={x}><CheckCircle2 className="h-5 w-5 text-primary"/>{x}</div>)}</div><Button className="mt-8" asChild><Link to="/contact">Discuss your workflow</Link></Button></div></div></section><section className="section-band bg-muted/45"><div className="site-container"><SectionHeading eyebrow="Approach" title="Four principles behind every build"/><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{[[Bot,"Purpose-built AI"],[Workflow,"Visible logic"],[Network,"Connected tools"],[ShieldCheck,"Safe handoff"]].map(([I,t])=>{const Icon=I as typeof Bot;return <div className="rounded-xl border border-border bg-card p-6" key={t as string}><Icon className="text-primary"/><h3 className="mt-5 font-semibold">{t as string}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">Practical decisions, documented clearly and tested against real use.</p></div>})}</div></div></section><FinalCTA/></SiteLayout>}
+export const Route = createFileRoute("/about")({
+  head: () =>
+    pageMeta(
+      "About Md. Sabbir Hossain",
+      "Meet the automation specialist behind FlowPilot and learn how practical AI systems are designed.",
+    ),
+  component: About,
+});
+function About() {
+  return (
+    <SiteLayout>
+      <PageHeader
+        eyebrow="About FlowPilot"
+        title="Automation should make work clearer, not more complicated."
+        description="I’m Md. Sabbir Hossain. I design AI agents and n8n systems around the way a business actually operates."
+      />
+      <section className="section-band">
+        <div className="site-container grid items-center gap-10 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-xl bg-workflow">
+            <img
+              src={assets.founder}
+              alt="Md. Sabbir Hossain at his AI automation workspace"
+              className="aspect-[4/3] w-full object-cover"
+            />
+          </div>
+          <div>
+            <p className="eyebrow">Who I am</p>
+            <h2 className="mt-3 text-4xl font-semibold">A builder focused on useful systems</h2>
+            <p className="mt-5 leading-8 text-muted-foreground">
+              FlowPilot brings together workflow design, AI, APIs and structured data. My goal is
+              not automation for its own sake—it is a dependable system your team understands and
+              your customers can feel.
+            </p>
+            <div className="mt-7 grid gap-3">
+              {[
+                "Start with the real process",
+                "Design for failure and handoff",
+                "Keep ownership with your team",
+                "Measure the useful outcome",
+              ].map((x) => (
+                <div className="flex items-center gap-3" key={x}>
+                  <CheckCircle2 className="h-5 w-5 text-primary" />
+                  {x}
+                </div>
+              ))}
+            </div>
+            <Button className="mt-8" asChild>
+              <Link to="/contact">Discuss your workflow</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+      <section className="section-band bg-muted/45">
+        <div className="site-container">
+          <SectionHeading eyebrow="Approach" title="Four principles behind every build" />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              [Bot, "Purpose-built AI"],
+              [Workflow, "Visible logic"],
+              [Network, "Connected tools"],
+              [ShieldCheck, "Safe handoff"],
+            ].map(([I, t]) => {
+              const Icon = I as typeof Bot;
+              return (
+                <div className="rounded-xl border border-border bg-card p-6" key={t as string}>
+                  <Icon className="text-primary" />
+                  <h3 className="mt-5 font-semibold">{t as string}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    Practical decisions, documented clearly and tested against real use.
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      <FinalCTA />
+    </SiteLayout>
+  );
+}
