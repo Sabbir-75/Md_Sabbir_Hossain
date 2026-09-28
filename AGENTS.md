@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Use flat TanStack route files plus shared FlowPilot feature/layout components; this keeps route ownership clear and prevents duplicate paths.
+- Keep public catalogue content mirrored in typed client-safe data for fast SSR while Supabase remains the editable production source.
+- Keep authenticated customer and admin pages under the `_authenticated` pathless gate; this prevents private UI from rendering before session validation.
