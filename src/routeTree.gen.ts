@@ -13,10 +13,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -44,6 +46,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -62,6 +69,11 @@ const ProductsRoute = ProductsRouteImport.update({
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -104,10 +116,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
@@ -120,10 +134,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
@@ -138,10 +154,12 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
@@ -156,10 +174,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/forgot-password'
     | '/login'
     | '/privacy'
     | '/products'
     | '/projects'
+    | '/reset-password'
     | '/services'
     | '/signup'
     | '/terms'
@@ -172,10 +192,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/forgot-password'
     | '/login'
     | '/privacy'
     | '/products'
     | '/projects'
+    | '/reset-password'
     | '/services'
     | '/signup'
     | '/terms'
@@ -189,10 +211,12 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/about'
     | '/contact'
+    | '/forgot-password'
     | '/login'
     | '/privacy'
     | '/products'
     | '/projects'
+    | '/reset-password'
     | '/services'
     | '/signup'
     | '/terms'
@@ -207,10 +231,12 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRouteWithChildren
   ProjectsRoute: typeof ProjectsRouteWithChildren
+  ResetPasswordRoute: typeof ResetPasswordRoute
   ServicesRoute: typeof ServicesRoute
   SignupRoute: typeof SignupRoute
   TermsRoute: typeof TermsRoute
@@ -247,6 +273,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -273,6 +306,13 @@ declare module '@tanstack/react-router' {
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -367,10 +407,12 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRouteWithChildren,
   ProjectsRoute: ProjectsRouteWithChildren,
+  ResetPasswordRoute: ResetPasswordRoute,
   ServicesRoute: ServicesRoute,
   SignupRoute: SignupRoute,
   TermsRoute: TermsRoute,
