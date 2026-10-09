@@ -8,8 +8,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { pageMeta } from "@/lib/meta";
 
 export const Route = createFileRoute("/login")({
-  validateSearch: (s: Record<string, unknown>): { redirect?: string } => ({
-    redirect: typeof s.redirect === "string" ? s.redirect : undefined,
+  validateSearch: (s: Record<string, unknown>): { redirect?: string | undefined } => ({
+    redirect: typeof s["redirect"] === "string" ? s["redirect"] : undefined,
   }),
   head: () => pageMeta("Login", "Sign in to your FlowPilot account to buy and download products."),
   component: LoginPage,
@@ -28,7 +28,7 @@ function LoginPage() {
       password: String(f.get("password")),
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) return void toast.error(error.message);
     toast.success("Welcome back!");
     navigate({ to: safeRedirect(redirect) });
   };

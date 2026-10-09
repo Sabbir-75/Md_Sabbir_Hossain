@@ -31,7 +31,7 @@ function ContactPage() {
       message: String(f.get("message")).trim().slice(0, 3000),
     });
     setBusy(false);
-    if (error) return toast.error("Message could not be sent. Please try WhatsApp.");
+    if (error) return void toast.error("Message could not be sent. Please try WhatsApp.");
     toast.success("Message sent! I'll reply soon.");
     form.reset();
   };
