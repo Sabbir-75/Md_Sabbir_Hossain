@@ -37,10 +37,10 @@ function CheckoutPage() {
     if (!user) return;
     const f = new FormData(e.currentTarget);
     const trx = String(f.get("trx")).trim().toUpperCase();
-    if (!/^[A-Z0-9]{6,20}$/.test(trx)) return toast.error("Enter a valid bKash transaction ID.");
+    if (!/^[A-Z0-9]{6,20}$/.test(trx)) return void toast.error("Enter a valid bKash transaction ID.");
     const phone = String(f.get("phone")).trim();
     const bkash = String(f.get("bkash")).trim();
-    if (!/^01\d{9}$/.test(bkash)) return toast.error("bKash number must be 11 digits starting with 01.");
+    if (!/^01\d{9}$/.test(bkash)) return void toast.error("bKash number must be 11 digits starting with 01.");
     setBusy(true);
     const { error } = await supabase.from("orders").insert({
       user_id: user.id,
@@ -53,7 +53,7 @@ function CheckoutPage() {
     });
     setBusy(false);
     if (error) {
-      return toast.error(
+      return void toast.error(
         error.code === "23505" ? "This transaction ID has already been used." : error.message,
       );
     }
@@ -104,8 +104,8 @@ function CheckoutPage() {
           ) : (
             <form onSubmit={submit} className="grid gap-4">
               <h2 className="text-2xl font-semibold">Payment details</h2>
-              <Field label="Full name" name="name" required maxLength={100} defaultValue={user.user_metadata?.full_name ?? ""} />
-              <Field label="Phone" name="phone" type="tel" required maxLength={20} defaultValue={user.user_metadata?.phone ?? ""} />
+              <Field label="Full name" name="name" required maxLength={100} defaultValue={user.user_metadata?.["full_name"] ?? ""} />
+              <Field label="Phone" name="phone" type="tel" required maxLength={20} defaultValue={user.user_metadata?.["phone"] ?? ""} />
               <Field label="bKash number (sent from)" name="bkash" placeholder="01XXXXXXXXX" required maxLength={11} />
               <Field label="Transaction ID (TrxID)" name="trx" placeholder="e.g. 9BG7XK2LQP" required maxLength={20} />
               <div className="grid gap-2">

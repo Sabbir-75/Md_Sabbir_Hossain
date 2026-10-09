@@ -13,9 +13,9 @@ export const Route = createFileRoute("/reset-password")({
     const submit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const password = String(new FormData(e.currentTarget).get("password"));
-      if (password.length < 8) return toast.error("Password must be at least 8 characters.");
+      if (password.length < 8) return void toast.error("Password must be at least 8 characters.");
       const { error } = await supabase.auth.updateUser({ password });
-      if (error) return toast.error(error.message);
+      if (error) return void toast.error(error.message);
       toast.success("Password updated.");
       navigate({ to: "/dashboard" });
     };
