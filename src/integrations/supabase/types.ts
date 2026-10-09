@@ -14,6 +14,192 @@ export type Database = {
   }
   public: {
     Tables: {
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          is_read: boolean
+          message: string
+          name: string
+          phone: string
+          subject: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          is_read?: boolean
+          message: string
+          name: string
+          phone?: string
+          subject?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          is_read?: boolean
+          message?: string
+          name?: string
+          phone?: string
+          subject?: string
+        }
+        Relationships: []
+      }
+      faqs: {
+        Row: {
+          answer: string
+          created_at: string
+          id: string
+          is_published: boolean
+          question: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          answer: string
+          created_at?: string
+          id?: string
+          is_published?: boolean
+          question: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          answer?: string
+          created_at?: string
+          id?: string
+          is_published?: boolean
+          question?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          amount: number
+          bkash_number: string
+          created_at: string
+          customer_name: string
+          id: string
+          note: string
+          payment_status: Database["public"]["Enums"]["payment_status"]
+          phone: string
+          product_slug: string
+          product_title: string
+          status: Database["public"]["Enums"]["order_status"]
+          trx_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          bkash_number: string
+          created_at?: string
+          customer_name: string
+          id?: string
+          note?: string
+          payment_status?: Database["public"]["Enums"]["payment_status"]
+          phone: string
+          product_slug: string
+          product_title?: string
+          status?: Database["public"]["Enums"]["order_status"]
+          trx_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          bkash_number?: string
+          created_at?: string
+          customer_name?: string
+          id?: string
+          note?: string
+          payment_status?: Database["public"]["Enums"]["payment_status"]
+          phone?: string
+          product_slug?: string
+          product_title?: string
+          status?: Database["public"]["Enums"]["order_status"]
+          trx_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          download_url: string | null
+          features: Json
+          id: string
+          image_url: string | null
+          includes: Json
+          is_published: boolean
+          old_price: number
+          price: number
+          rating: number
+          requirements: Json
+          sales: number
+          slug: string
+          sort_order: number
+          status: string
+          subtitle: string
+          technologies: Json
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          description?: string
+          download_url?: string | null
+          features?: Json
+          id?: string
+          image_url?: string | null
+          includes?: Json
+          is_published?: boolean
+          old_price?: number
+          price: number
+          rating?: number
+          requirements?: Json
+          sales?: number
+          slug: string
+          sort_order?: number
+          status?: string
+          subtitle?: string
+          technologies?: Json
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          download_url?: string | null
+          features?: Json
+          id?: string
+          image_url?: string | null
+          includes?: Json
+          is_published?: boolean
+          old_price?: number
+          price?: number
+          rating?: number
+          requirements?: Json
+          sales?: number
+          slug?: string
+          sort_order?: number
+          status?: string
+          subtitle?: string
+          technologies?: Json
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

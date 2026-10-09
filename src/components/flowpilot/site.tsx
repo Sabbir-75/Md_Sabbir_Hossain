@@ -17,6 +17,7 @@ import { FaPinterestP } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { assets } from "@/lib/flowpilot-data";
+import { WhatsAppButton } from "@/components/flowpilot/whatsapp";
 
 const links = [
   ["/", "Home"],
@@ -289,6 +290,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       <Header />
       <main>{children}</main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }
