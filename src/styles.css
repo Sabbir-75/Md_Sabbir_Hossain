@@ -309,3 +309,31 @@ select {
     transition-duration: 0.01ms !important;
   }
 }
+
+.whatsapp-fab {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 9999px;
+  background: var(--whatsapp);
+  color: var(--whatsapp-foreground);
+  box-shadow: 0 10px 30px -8px var(--whatsapp);
+  animation: wa-bounce 2.4s ease-in-out infinite;
+  transition: transform 0.2s;
+}
+.whatsapp-fab:hover { transform: scale(1.08); animation-play-state: paused; }
+.whatsapp-ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--whatsapp);
+  animation: wa-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes wa-ping { 75%, 100% { transform: scale(1.6); opacity: 0; } 0% { opacity: 0.55; } }
+@keyframes wa-bounce { 0%, 100% { transform: translateY(0) rotate(0); } 10% { transform: translateY(-6px) rotate(-8deg); } 20% { transform: translateY(0) rotate(8deg); } 30% { transform: rotate(0); } }
+:root { --whatsapp: oklch(0.72 0.17 150); --whatsapp-foreground: oklch(1 0 0); }
